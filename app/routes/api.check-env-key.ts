@@ -20,8 +20,7 @@ export const loader: LoaderFunction = async ({ context, request }) => {
   const envVarName = providerInstance.config.apiTokenKey;
 
   // Get API keys from cookie
-  const cookieHeader = request.headers.get('Cookie');
-  const apiKeys = getApiKeysFromCookie(cookieHeader);
+  const apiKeys = {};
 
   /*
    * Check API key in order of precedence:

@@ -54,9 +54,8 @@ export async function loader({
   const llmManager = LLMManager.getInstance(context.cloudflare?.env);
 
   // Get client side maintained API keys and provider settings from cookies
-  const cookieHeader = request.headers.get('Cookie');
-  const apiKeys = getApiKeysFromCookie(cookieHeader);
-  const providerSettings = getProviderSettingsFromCookie(cookieHeader);
+  const apiKeys = {};
+  const providerSettings = {};
 
   const { providers, defaultProvider } = getProviderInfo(llmManager);
 

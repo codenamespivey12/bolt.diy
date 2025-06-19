@@ -135,17 +135,10 @@ export const ChatImpl = memo(
     );
     const supabaseAlert = useStore(workbenchStore.supabaseAlert);
     const { activeProviders, promptId, autoSelectTemplate, contextOptimizationEnabled } = useSettings();
-    const [model, setModel] = useState(() => {
-      const savedModel = Cookies.get('selectedModel');
-      return savedModel || DEFAULT_MODEL;
-    });
-    const [provider, setProvider] = useState(() => {
-      const savedProvider = Cookies.get('selectedProvider');
-      return (PROVIDER_LIST.find((p) => p.name === savedProvider) || DEFAULT_PROVIDER) as ProviderInfo;
-    });
+    const model = DEFAULT_MODEL;
+    const provider = DEFAULT_PROVIDER as ProviderInfo;
     const { showChat } = useStore(chatStore);
     const [animationScope, animate] = useAnimate();
-    const [apiKeys, setApiKeys] = useState<Record<string, string>>({});
     const [chatMode, setChatMode] = useState<'discuss' | 'build'>('build');
     const [selectedElement, setSelectedElement] = useState<ElementInfo | null>(null);
     const {
@@ -164,7 +157,6 @@ export const ChatImpl = memo(
     } = useChat({
       api: '/api/chat',
       body: {
-        apiKeys,
         files,
         promptId,
         contextOptimization: contextOptimizationEnabled,
@@ -494,23 +486,7 @@ export const ChatImpl = memo(
       [],
     );
 
-    useEffect(() => {
-      const storedApiKeys = Cookies.get('apiKeys');
-
-      if (storedApiKeys) {
-        setApiKeys(JSON.parse(storedApiKeys));
-      }
-    }, []);
-
-    const handleModelChange = (newModel: string) => {
-      setModel(newModel);
-      Cookies.set('selectedModel', newModel, { expires: 30 });
-    };
-
-    const handleProviderChange = (newProvider: ProviderInfo) => {
-      setProvider(newProvider);
-      Cookies.set('selectedProvider', newProvider.name, { expires: 30 });
-    };
+    useEffect(() => {}, []);
 
     return (
       <BaseChat
@@ -527,10 +503,7 @@ export const ChatImpl = memo(
         promptEnhanced={promptEnhanced}
         sendMessage={sendMessage}
         model={model}
-        setModel={handleModelChange}
         provider={provider}
-        setProvider={handleProviderChange}
-        providerList={activeProviders}
         handleInputChange={(e) => {
           onTextareaChange(e);
           debouncedCachePrompt(e);
@@ -558,7 +531,6 @@ export const ChatImpl = memo(
             },
             model,
             provider,
-            apiKeys,
           );
         }}
         uploadedFiles={uploadedFiles}

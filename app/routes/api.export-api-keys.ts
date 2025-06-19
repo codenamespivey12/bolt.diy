@@ -4,8 +4,7 @@ import { getApiKeysFromCookie } from '~/lib/api/cookies';
 
 export const loader: LoaderFunction = async ({ context, request }) => {
   // Get API keys from cookie
-  const cookieHeader = request.headers.get('Cookie');
-  const apiKeysFromCookie = getApiKeysFromCookie(cookieHeader);
+  const apiKeysFromCookie = {};
 
   // Initialize the LLM manager to access environment variables
   const llmManager = LLMManager.getInstance(context?.cloudflare?.env as any);
