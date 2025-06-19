@@ -17,8 +17,8 @@ export function Header() {
     >
       <div className="flex items-center gap-2 z-logo text-bolt-elements-textPrimary cursor-pointer">
         <div className="i-ph:sidebar-simple-duotone text-xl" />
-        <a href="/" className="text-2xl font-semibold text-red-500 flex items-center">
-          <span className="text-white">bolt</span><span className="text-red-500">.diy</span>
+        <a href="/" className="flex items-center">
+          <img src="/mujo-code-logo.svg" alt="MUJO.CODE" className="h-8" />
         </a>
       </div>
       {chat.started && ( // Display ChatDescription and HeaderActionButtons only when the chat has started.

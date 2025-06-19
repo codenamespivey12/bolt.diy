@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cream-text {
+        fill: #F5F5DC;
+        font-family: 'Arial Black', Arial, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        letter-spacing: 2px;
+      }
+      .red-text {
+        fill: #DC2626;
+        font-family: 'Arial Black', Arial, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        letter-spacing: 2px;
+      }
+      .dot {
+        fill: #DC2626;
+      }
+    </style>
+  </defs>
+  
+  <!-- MUJO text in cream -->
+  <text x="10" y="35" class="cream-text">MUJO</text>
+  
+  <!-- Dot -->
+  <circle cx="95" cy="45" r="3" class="dot"/>
+  
+  <!-- CODE text in red -->
+  <text x="105" y="35" class="red-text">CODE</text>
+</svg>
