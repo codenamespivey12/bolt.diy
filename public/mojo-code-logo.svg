@@ -22,8 +22,8 @@
     </style>
   </defs>
   
-  <!-- MUJO text in cream -->
-  <text x="10" y="35" class="cream-text">MUJO</text>
+  <!-- MOJO text in cream -->
+  <text x="10" y="35" class="cream-text">MOJO</text>
   
   <!-- Dot -->
   <circle cx="95" cy="45" r="3" class="dot"/>
