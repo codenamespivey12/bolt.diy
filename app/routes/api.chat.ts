@@ -55,11 +55,8 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
     };
   }>();
 
-  const cookieHeader = request.headers.get('Cookie');
-  const apiKeys = JSON.parse(parseCookies(cookieHeader || '').apiKeys || '{}');
-  const providerSettings: Record<string, IProviderSetting> = JSON.parse(
-    parseCookies(cookieHeader || '').providers || '{}',
-  );
+  const apiKeys = {};
+  const providerSettings: Record<string, IProviderSetting> = {};
 
   const stream = new SwitchableStream();
 
