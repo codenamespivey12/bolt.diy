@@ -73,6 +73,10 @@ const gitInfo = getGitInfo();
 
 export default defineConfig((config) => {
   return {
+    server: {
+      host: true,
+      allowedHosts: ['work-1-fpntkebmezxhpmqv.prod-runtime.all-hands.dev', 'localhost', '127.0.0.1'],
+    },
     define: {
       __COMMIT_HASH: JSON.stringify(gitInfo.commitHash),
       __GIT_BRANCH: JSON.stringify(gitInfo.branch),
